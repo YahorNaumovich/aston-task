@@ -8,4 +8,6 @@ public interface AttractionService {
     void addAttraction(Attraction attraction);
 
     List<Attraction> getAllAttractionsByLocality(Long localityId);
+
+    void updateAttractionDescription(Long id, String description);
 }

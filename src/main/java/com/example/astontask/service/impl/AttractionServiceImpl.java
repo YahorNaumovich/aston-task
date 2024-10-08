@@ -33,4 +33,11 @@ public class AttractionServiceImpl implements AttractionService {
         Locality locality = localityRepository.findById(localityId).orElseThrow(RuntimeException::new);
         return attractionRepository.findByLocality(locality);
     }
+
+    @Override
+    public void updateAttractionDescription(Long id, String description) {
+        Attraction attractionToUpdate = attractionRepository.findById(id).orElseThrow(RuntimeException::new);
+        attractionToUpdate.setDescription(description);
+        attractionRepository.save(attractionToUpdate);
+    }
 }

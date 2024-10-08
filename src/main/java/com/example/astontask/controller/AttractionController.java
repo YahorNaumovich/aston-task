@@ -28,4 +28,10 @@ public class AttractionController {
     public List<Attraction> getAllAttractionsByLocality(@PathVariable Long localityId) {
         return attractionService.getAllAttractionsByLocality(localityId);
     }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Change attraction description", description = "Changes attraction description")
+    public void updateAttractionDescription(@PathVariable Long id, @RequestBody String description) {
+        attractionService.updateAttractionDescription(id, description);
+    }
 }
