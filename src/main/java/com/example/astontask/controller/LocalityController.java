@@ -23,4 +23,6 @@ public class LocalityController {
     public void addLocality(@RequestBody Locality locality){
         localityService.addLocality(locality);
     }
+
+    //TODO - Изменение данных по местоположению (возможно изменение только полей: краткое описание, сопровождение (услуга)).
 }
