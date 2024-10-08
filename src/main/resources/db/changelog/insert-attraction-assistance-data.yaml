@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: your_name
+      changes:
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "1"
+              - column:
+                  name: assistance_id
+                  value: "1"
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "1"
+              - column:
+                  name: assistance_id
+                  value: "2"
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "1"
+              - column:
+                  name: assistance_id
+                  value: "3"
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "2"
+              - column:
+                  name: assistance_id
+                  value: "4"
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "2"
+              - column:
+                  name: assistance_id
+                  value: "5"
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "3"
+              - column:
+                  name: assistance_id
+                  value: "6"
+        - insert:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  value: "4"
+              - column:
+                  name: assistance_id
+                  value: "4"

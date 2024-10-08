@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: your_name
+      changes:
+        - createTable:
+            tableName: attraction_assistance
+            columns:
+              - column:
+                  name: attraction_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: assistance_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: attraction_assistance
+            baseColumnNames: attraction_id
+            constraintName: FK_Attraction_Assistance
+            referencedTableName: attraction
+            referencedColumnNames: id
+        - addForeignKeyConstraint:
+            baseTableName: attraction_assistance
+            baseColumnNames: assistance_id
+            constraintName: FK_Assistance_Attraction
+            referencedTableName: assistance
+            referencedColumnNames: id
+        - addPrimaryKey:
+            tableName: attraction_assistance
+            columnNames: attraction_id, assistance_id
