@@ -1,6 +1,7 @@
 package com.example.astontask.controller;
 
 import com.example.astontask.model.Attraction;
+import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,13 +19,20 @@ public class AttractionController {
     private final AttractionService attractionService;
 
     @PostMapping
-    @Operation(summary = "Add attraction", description = "Adds new attraction and its assistances.")
+    @Operation(summary = "Add attraction", description = "Adds new attraction and its assistances")
     public void addAttraction(@RequestBody Attraction attraction) {
         attractionService.addAttraction(attraction);
     }
 
+    @GetMapping
+    @Operation(summary = "Get all attractions", description = "Gets a list of all attractions with the ability to filter and sort")
+    public List<Attraction> getAllAttractions(@RequestParam String sortBy,
+                                              @RequestParam AttractionType type){
+        return attractionService.getAllAttractions(sortBy, type);
+    }
+
     @GetMapping("/locality/{localityId}")
-    @Operation(summary = "Get all attractions by locality", description = "Gets all attractions by specified locality id")
+    @Operation(summary = "Get all attractions by locality", description = "Gets a list of all attractions by specified locality id")
     public List<Attraction> getAllAttractionsByLocality(@PathVariable Long localityId) {
         return attractionService.getAllAttractionsByLocality(localityId);
     }

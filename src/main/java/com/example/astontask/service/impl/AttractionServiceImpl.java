@@ -3,12 +3,14 @@ package com.example.astontask.service.impl;
 import com.example.astontask.model.Assistance;
 import com.example.astontask.model.Attraction;
 import com.example.astontask.model.Locality;
+import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.repository.AssistanceRepository;
 import com.example.astontask.repository.AttractionRepository;
 import com.example.astontask.repository.LocalityRepository;
 import com.example.astontask.service.AttractionService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +47,11 @@ public class AttractionServiceImpl implements AttractionService {
     public void deleteAttraction(Long id) {
         Attraction attractionToDelete = attractionRepository.findById(id).orElseThrow(RuntimeException::new);
         attractionRepository.delete(attractionToDelete);
+    }
+
+    @Override
+    public List<Attraction> getAllAttractions(String sortBy, AttractionType type) {
+        Sort sort = Sort.by(Sort.Order.asc(sortBy));
+        return attractionRepository.findByType(type, sort);
     }
 }
