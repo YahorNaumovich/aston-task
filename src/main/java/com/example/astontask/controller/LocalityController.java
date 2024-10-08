@@ -1,6 +1,5 @@
 package com.example.astontask.controller;
 
-import com.example.astontask.dto.LocalityDTO;
 import com.example.astontask.model.Locality;
 import com.example.astontask.service.LocalityService;
 import io.swagger.v3.oas.annotations.Operation;

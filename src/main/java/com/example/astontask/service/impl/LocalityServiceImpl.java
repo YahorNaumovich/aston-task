@@ -1,7 +1,5 @@
 package com.example.astontask.service.impl;
 
-import com.example.astontask.dto.LocalityDTO;
-import com.example.astontask.mapper.LocalityMapper;
 import com.example.astontask.model.Locality;
 import com.example.astontask.repository.LocalityRepository;
 import com.example.astontask.service.LocalityService;

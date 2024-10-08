@@ -1,6 +1,5 @@
 package com.example.astontask.service.impl;
 
-import com.example.astontask.model.Assistance;
 import com.example.astontask.model.Attraction;
 import com.example.astontask.model.Locality;
 import com.example.astontask.model.type.AttractionType;
