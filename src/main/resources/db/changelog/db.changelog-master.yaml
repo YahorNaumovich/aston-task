@@ -10,15 +10,3 @@ databaseChangeLog:
 
   - include:
       file: db/changelog/create-attraction-assistance-table.yaml
-#
-#  - include:
-#      file: db/changelog/insert-locality-data.yaml
-#
-#  - include:
-#      file: db/changelog/insert-assistance-data.yaml
-#
-#  - include:
-#      file: db/changelog/insert-attraction-data.yaml
-#
-#  - include:
-#      file:  db/changelog/insert-attraction-assistance-data.yaml
