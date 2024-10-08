@@ -1,5 +1,6 @@
 package com.example.astontask.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,5 +20,6 @@ public class Locality {
     private String region;
 
     @OneToMany(mappedBy = "locality")
+    @JsonIgnore
     private List<Attraction> attractions;
 }

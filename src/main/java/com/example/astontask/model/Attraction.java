@@ -1,6 +1,7 @@
 package com.example.astontask.model;
 
 import com.example.astontask.model.type.AttractionType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
