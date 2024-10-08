@@ -40,4 +40,10 @@ public class AttractionServiceImpl implements AttractionService {
         attractionToUpdate.setDescription(description);
         attractionRepository.save(attractionToUpdate);
     }
+
+    @Override
+    public void deleteAttraction(Long id) {
+        Attraction attractionToDelete = attractionRepository.findById(id).orElseThrow(RuntimeException::new);
+        attractionRepository.delete(attractionToDelete);
+    }
 }

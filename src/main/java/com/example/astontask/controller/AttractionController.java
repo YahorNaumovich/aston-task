@@ -34,4 +34,10 @@ public class AttractionController {
     public void updateAttractionDescription(@PathVariable Long id, @RequestBody String description) {
         attractionService.updateAttractionDescription(id, description);
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete attraction", description = "Deletes an attraction by id")
+    public void deleteAttraction(@PathVariable Long id) {
+        attractionService.deleteAttraction(id);
+    }
 }

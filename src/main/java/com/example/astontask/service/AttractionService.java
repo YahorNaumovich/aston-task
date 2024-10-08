@@ -10,4 +10,6 @@ public interface AttractionService {
     List<Attraction> getAllAttractionsByLocality(Long localityId);
 
     void updateAttractionDescription(Long id, String description);
+
+    void deleteAttraction(Long id);
 }
