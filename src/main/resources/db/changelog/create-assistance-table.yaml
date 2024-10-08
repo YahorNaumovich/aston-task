@@ -24,7 +24,7 @@ databaseChangeLog:
                   constraints:
                     nullable: true
               - column:
-                  name: performer
+                  name: provider
                   type: VARCHAR(255)
                   constraints:
                     nullable: false

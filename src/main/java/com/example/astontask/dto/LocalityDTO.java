@@ -10,7 +10,5 @@ public class LocalityDTO {
     private Long id;
     private String name;
     private String region;
-    private Double latitude;
-    private Double longitude;
     private List<AttractionDTO> attractions;
 }
