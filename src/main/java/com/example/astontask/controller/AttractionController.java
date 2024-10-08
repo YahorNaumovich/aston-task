@@ -24,7 +24,7 @@ public class AttractionController {
     }
 
     @GetMapping("/locality/{localityId}")
-    @Operation(summary = "Get all attractions by locality", description = "Gets all atractions by specified locality id")
+    @Operation(summary = "Get all attractions by locality", description = "Gets all attractions by specified locality id")
     public List<Attraction> getAllAttractionsByLocality(@PathVariable Long localityId) {
         return attractionService.getAllAttractionsByLocality(localityId);
     }
