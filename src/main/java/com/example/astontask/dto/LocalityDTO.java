@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object (DTO) for Locality.
+ * Represents the details of a locality, including its name, region, and related attractions.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

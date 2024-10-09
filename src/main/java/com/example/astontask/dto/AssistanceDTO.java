@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object (DTO) for Assistance.
+ * Represents the details of an assistance, including its type, description, provider, and related attractions.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
