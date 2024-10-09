@@ -10,17 +10,34 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
+/**
+ * Aspect for logging method executions in controllers.
+ * Logs the method name, arguments, and the result of the method execution.
+ * Also logs any exceptions thrown during the execution.
+ */
 @Aspect
 @Component
 public class ControllerLoggingAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerLoggingAspect.class);
 
+    /**
+     * Pointcut that matches all methods within classes annotated with @RestController.
+     * This will be used to intercept controller methods.
+     */
     @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
     public void controllerPointcut() {
         // Pointcut for all controllers
     }
 
+    /**
+     * Logs method execution details for methods in controllers.
+     * Logs the method name, arguments, the result of the method, and any exceptions thrown.
+     *
+     * @param joinPoint the join point that provides details about the method being executed
+     * @return the result of the method execution
+     * @throws Exception if the method execution fails
+     */
     @Around("controllerPointcut()")
     public Object logControllerMethods(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().toShortString();
