@@ -11,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface AttractionRepository extends JpaRepository<Attraction, Long> {
+
     List<Attraction> findByType(AttractionType type, Sort sort);
+
     List<Attraction> findByLocality(Locality locality);
+
 }

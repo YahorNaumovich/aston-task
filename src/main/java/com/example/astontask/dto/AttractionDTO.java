@@ -9,11 +9,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AttractionDTO {
+
     private Long id;
+
     private String name;
+
     private Date creationDate;
+
     private String description;
+
     private AttractionType type;
+
     private LocalityDTO locality;
+
     private List<AssistanceDTO> assistance;
+
 }
