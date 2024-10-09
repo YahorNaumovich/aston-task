@@ -7,9 +7,18 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+/**
+ * Swagger configuration class for API documentation.
+ * Configures Swagger to generate OpenAPI 3.0 documentation for the application.
+ */
 @Configuration
 public class SwaggerConfig {
 
+    /**
+     * Creates and configures a Docket bean for Swagger.
+     *
+     * @return a Docket instance configured for OpenAPI 3.0 specification
+     */
     @Bean
     public Docket api() {
 
