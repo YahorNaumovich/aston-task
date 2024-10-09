@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * REST controller for managing localities.
+ * Provides endpoints for adding and managing localities.
+ */
 @RestController
 @RequestMapping("/api/localities")
 @RequiredArgsConstructor
@@ -22,6 +26,13 @@ public class LocalityController {
 
     private final LocalityService localityService;
 
+    /**
+     * Adds a new locality.
+     *
+     * @param localityDTO the data of the locality to be added
+     * @return ResponseEntity with status 201 (Created) if the locality was successfully created,
+     *         or an appropriate error status otherwise
+     */
     @PostMapping
     @Operation(summary = "Add locality", description = "Adds new locality")
     @ApiResponses(value = {
