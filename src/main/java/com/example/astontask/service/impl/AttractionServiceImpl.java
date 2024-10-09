@@ -18,6 +18,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service implementation for managing attractions.
+ * Implements the methods for adding, updating, retrieving, and deleting attractions.
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -28,6 +32,12 @@ public class AttractionServiceImpl implements AttractionService {
     private final LocalityRepository localityRepository;
     private final ModelMapper modelMapper;
 
+    /**
+     * Adds a new attraction.
+     *
+     * @param attractionDTO the data transfer object containing the details of the attraction to be added
+     * @throws InvalidDataException if the provided data is invalid
+     */
     @Override
     public void addAttraction(AttractionDTO attractionDTO) {
 
@@ -44,6 +54,13 @@ public class AttractionServiceImpl implements AttractionService {
         }
     }
 
+    /**
+     * Retrieves all attractions by locality ID.
+     *
+     * @param localityId the ID of the locality for which attractions are to be retrieved
+     * @return a list of {@link AttractionDTO} representing all attractions in the specified locality
+     * @throws EntityNotFoundException if no locality is found with the specified ID
+     */
     @Override
     public List<AttractionDTO> getAllAttractionsByLocality(Long localityId) {
 
@@ -60,6 +77,13 @@ public class AttractionServiceImpl implements AttractionService {
 
     }
 
+    /**
+     * Updates the description of an existing attraction.
+     *
+     * @param id the ID of the attraction to update
+     * @param description the new description of the attraction
+     * @throws EntityNotFoundException if the attraction with the specified ID is not found
+     */
     @Override
     public void updateAttractionDescription(Long id, String description) {
 
@@ -72,6 +96,12 @@ public class AttractionServiceImpl implements AttractionService {
 
     }
 
+    /**
+     * Deletes an attraction by its ID.
+     *
+     * @param id the ID of the attraction to be deleted
+     * @throws EntityNotFoundException if the attraction with the specified ID is not found
+     */
     @Override
     public void deleteAttraction(Long id) {
 
@@ -83,6 +113,13 @@ public class AttractionServiceImpl implements AttractionService {
 
     }
 
+    /**
+     * Retrieves all attractions with sorting and filtering options.
+     *
+     * @param sortBy the field by which to sort the attractions
+     * @param type the type of attractions to filter by
+     * @return a list of {@link AttractionDTO} representing all attractions sorted and filtered by the specified criteria
+     */
     @Override
     public List<AttractionDTO> getAllAttractions(String sortBy, AttractionType type) {
 
