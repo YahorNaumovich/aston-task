@@ -1,6 +1,7 @@
 package com.example.astontask.service.impl;
 
 import com.example.astontask.dto.LocalityDTO;
+import com.example.astontask.exception.InvalidDataException;
 import com.example.astontask.model.Locality;
 import com.example.astontask.repository.LocalityRepository;
 import com.example.astontask.service.LocalityService;
@@ -19,7 +20,17 @@ public class LocalityServiceImpl implements LocalityService {
 
     @Override
     public void addLocality(LocalityDTO localityDTO) {
-        Locality locality = modelMapper.map(localityDTO, Locality.class);
-        localityRepository.save(locality);
+
+        try {
+
+            Locality locality = modelMapper.map(localityDTO, Locality.class);
+            localityRepository.save(locality);
+
+        } catch (Exception e) {
+
+            throw new InvalidDataException("Invalid data provided for locality creation");
+
+        }
+
     }
 }
