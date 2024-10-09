@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Entity representing a locality.
+ * This class holds the details of a locality, including its name, region,
+ * and the list of attractions that belong to this locality.
+ */
 @Entity
 @Data
 @NoArgsConstructor

@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Entity representing an assistance service provided to attractions.
+ * This class holds the details of an assistance, including its type, description, provider,
+ * and the attractions it is associated with.
+ */
 @Entity
 @Data
 @NoArgsConstructor

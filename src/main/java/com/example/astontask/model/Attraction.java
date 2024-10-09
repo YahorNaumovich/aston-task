@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Entity representing an attraction.
+ * This class holds the details of an attraction, including its name, creation date, description, type, locality, and related assistance services.
+ */
 @Entity
 @Data
 @NoArgsConstructor
