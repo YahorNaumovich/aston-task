@@ -1,6 +1,6 @@
 package com.example.astontask.controller;
 
-import com.example.astontask.model.Locality;
+import com.example.astontask.dto.LocalityDTO;
 import com.example.astontask.service.LocalityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,8 +20,8 @@ public class LocalityController {
 
     @PostMapping
     @Operation(summary = "Add locality", description = "Adds new locality")
-    public void addLocality(@RequestBody Locality locality){
-        localityService.addLocality(locality);
+    public void addLocality(@RequestBody LocalityDTO localityDTO){
+        localityService.addLocality(localityDTO);
     }
 
     //TODO - Изменение данных по местоположению (возможно изменение только полей: краткое описание, сопровождение (услуга)).

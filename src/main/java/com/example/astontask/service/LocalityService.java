@@ -1,7 +1,9 @@
 package com.example.astontask.service;
 
-import com.example.astontask.model.Locality;
+import com.example.astontask.dto.LocalityDTO;
 
 public interface LocalityService {
-    void addLocality(Locality locality);
+
+    void addLocality(LocalityDTO localityDTO);
+
 }
