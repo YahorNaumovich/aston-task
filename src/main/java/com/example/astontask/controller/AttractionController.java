@@ -37,7 +37,7 @@ public class AttractionController {
     @GetMapping
     @Operation(summary = "Get all attractions", description = "Gets a list of all attractions with the ability to filter and sort")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved list"),
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved list of attractions"),
             @ApiResponse(responseCode = "400", description = "Invalid sort or filter criteria"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
@@ -49,7 +49,7 @@ public class AttractionController {
     @GetMapping("/locality/{localityId}")
     @Operation(summary = "Get all attractions by locality", description = "Gets a list of all attractions by specified locality id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved list"),
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved list of attractions"),
             @ApiResponse(responseCode = "404", description = "Locality not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
