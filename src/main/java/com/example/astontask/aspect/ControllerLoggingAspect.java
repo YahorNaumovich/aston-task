@@ -42,7 +42,7 @@ public class ControllerLoggingAspect {
     public Object logControllerMethods(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().toShortString();
         Object[] args = joinPoint.getArgs();
-        logger.info("Executing controller method: {} with arguments: {}", methodName, Arrays.toString(args));
+        logger.info("Executing controller method: {} with arguments: {}", methodName, args);
 
         try {
             Object result = joinPoint.proceed();

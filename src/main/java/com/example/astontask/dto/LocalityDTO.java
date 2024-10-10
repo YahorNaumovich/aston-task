@@ -22,7 +22,4 @@ public class LocalityDTO {
 
     private String region;
 
-    @JsonIgnore
-    private List<AttractionDTO> attractions;
-
 }

@@ -41,12 +41,11 @@ public class RepositoryLoggingAspect {
     @Around("repositoryPointcut()")
     public Object logRepositoryMethods(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().toShortString();
-        Object[] args = joinPoint.getArgs();
-        logger.info("Executing repository method: {} with arguments: {}", methodName, Arrays.toString(args));
+        logger.info("Executing repository method: {}", methodName);
 
         try {
             Object result = joinPoint.proceed();
-            logger.info("Repository method {} returned: {}", methodName, result);
+            logger.info("Repository method {} finished", methodName);
             return result;
         } catch (Exception e) {
             logger.error("Error in repository method {}: {}", methodName, e.getMessage());

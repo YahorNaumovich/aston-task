@@ -42,7 +42,7 @@ public class ServiceLoggingAspect {
     public Object logServiceMethods(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().toShortString();
         Object[] args = joinPoint.getArgs();
-        logger.info("Executing service method: {} with arguments: {}", methodName, Arrays.toString(args));
+        logger.info("Executing service method: {} with arguments: {}", methodName, args);
 
         try {
             Object result = joinPoint.proceed();

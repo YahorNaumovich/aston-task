@@ -26,8 +26,5 @@ public class AssistanceDTO {
 
     private String provider;
 
-    @JsonIgnore
-    private List<Attraction> attractions;
-
 }
 
