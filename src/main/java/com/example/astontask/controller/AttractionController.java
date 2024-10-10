@@ -5,6 +5,7 @@ import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class AttractionController {
      *
      * @param attractionCreateDTO the attraction data to be added
      * @return ResponseEntity with status 201 (Created) if the attraction was successfully created,
-     *         or an appropriate error status otherwise
+     * or an appropriate error status otherwise
      */
     @PostMapping
     @Operation(summary = "Add attraction", description = "Adds new attraction and its assistances")
@@ -71,11 +72,11 @@ public class AttractionController {
      * @param id          the ID of the attraction to update
      * @param description the new description for the attraction
      * @return ResponseEntity with status 200 (OK) if the update was successful,
-     *         or an appropriate error status otherwise
+     * or an appropriate error status otherwise
      */
     @PutMapping("/{id}")
     @Operation(summary = "Change attraction description", description = "Changes attraction description")
-    public ResponseEntity<Void> updateAttractionDescription(@PathVariable Long id, @RequestBody String description) {
+    public ResponseEntity<Void> updateAttractionDescription(@PathVariable Long id, @RequestBody @Schema(example = "New attraction description") String description) {
         attractionService.updateAttractionDescription(id, description);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -85,7 +86,7 @@ public class AttractionController {
      *
      * @param id the ID of the attraction to delete
      * @return ResponseEntity with status 200 (OK) if the deletion was successful,
-     *         or an appropriate error status otherwise
+     * or an appropriate error status otherwise
      */
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete attraction", description = "Deletes an attraction by id")
