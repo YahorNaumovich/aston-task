@@ -9,15 +9,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(requiredProperties = {"type", "provider"})
 public class AssistanceCreateDTO {
 
-    @Schema(example = "FOOD")
+    @Schema(example = "FOOD", maxLength = 255)
     private AssistanceType type;
 
-    @Schema(example = "Providing hot meals and beverages to tourists during their visit")
+    @Schema(example = "Providing hot meals and beverages to tourists during their visit", maxLength = 500)
     private String description;
 
-    @Schema(example = "Moscow Food Services")
+    @Schema(example = "Moscow Food Services", maxLength = 255)
     private String provider;
 
 }

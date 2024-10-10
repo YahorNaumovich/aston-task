@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(requiredProperties = {"id"})
 public class AttractionLocalityReferenceDTO {
 
     @Schema(example = "1")

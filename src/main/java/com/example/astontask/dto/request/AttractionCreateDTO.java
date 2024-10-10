@@ -12,18 +12,19 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(requiredProperties = {"name", "creationDate", "type", "locality"})
 public class AttractionCreateDTO {
 
-    @Schema(example = "Moscow Kremlin")
+    @Schema(example = "Moscow Kremlin", maxLength = 255)
     private String name;
 
     @Schema(example = "2024-10-10T19:47:42.032Z")
     private Date creationDate;
 
-    @Schema(example = "Historic site located in the center of Moscow")
+    @Schema(example = "Historic site located in the center of Moscow", maxLength = 500)
     private String description;
 
-    @Schema(example = "PALACE")
+    @Schema(example = "PALACE", maxLength = 255)
     private AttractionType type;
 
     private AttractionLocalityReferenceDTO locality;
