@@ -1,4 +1,4 @@
-package com.example.astontask.dto;
+package com.example.astontask.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

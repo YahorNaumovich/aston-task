@@ -1,4 +1,4 @@
-package com.example.astontask.dto;
+package com.example.astontask.dto.response;
 
 import com.example.astontask.model.type.AssistanceType;
 import lombok.AllArgsConstructor;
