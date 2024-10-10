@@ -1,6 +1,7 @@
 package com.example.astontask.service.impl;
 
-import com.example.astontask.dto.AttractionDTO;
+import com.example.astontask.dto.request.AttractionCreateDTO;
+import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.exception.EntityNotFoundException;
 import com.example.astontask.exception.InvalidDataException;
 import com.example.astontask.model.Attraction;
@@ -39,11 +40,11 @@ public class AttractionServiceImpl implements AttractionService {
      * @throws InvalidDataException if the provided data is invalid
      */
     @Override
-    public void addAttraction(AttractionDTO attractionDTO) {
+    public void addAttraction(AttractionCreateDTO attractionCreateDTO) {
 
         try {
 
-            Attraction attraction = modelMapper.map(attractionDTO, Attraction.class);
+            Attraction attraction = modelMapper.map(attractionCreateDTO, Attraction.class);
             attractionRepository.save(attraction);
             assistanceRepository.saveAll(attraction.getAssistance());
 

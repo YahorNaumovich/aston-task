@@ -1,6 +1,7 @@
 package com.example.astontask.service.impl;
 
-import com.example.astontask.dto.LocalityDTO;
+import com.example.astontask.dto.request.LocalityCreateDTO;
+import com.example.astontask.dto.response.LocalityDTO;
 import com.example.astontask.exception.InvalidDataException;
 import com.example.astontask.model.Locality;
 import com.example.astontask.repository.LocalityRepository;
@@ -30,11 +31,11 @@ public class LocalityServiceImpl implements LocalityService {
      * @throws InvalidDataException if there is an error during the locality creation process
      */
     @Override
-    public void addLocality(LocalityDTO localityDTO) {
+    public void addLocality(LocalityCreateDTO localityCreateDTO) {
 
         try {
 
-            Locality locality = modelMapper.map(localityDTO, Locality.class);
+            Locality locality = modelMapper.map(localityCreateDTO, Locality.class);
             localityRepository.save(locality);
 
         } catch (Exception e) {

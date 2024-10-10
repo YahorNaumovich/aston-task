@@ -1,6 +1,7 @@
 package com.example.astontask.service;
 
-import com.example.astontask.dto.AttractionDTO;
+import com.example.astontask.dto.request.AttractionCreateDTO;
+import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.model.type.AttractionType;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface AttractionService {
      *
      * @param attractionDTO the data transfer object containing the details of the attraction to be added
      */
-    void addAttraction(AttractionDTO attractionDTO);
+    void addAttraction(AttractionCreateDTO attractionCreateDTO);
 
     /**
      * Retrieves all attractions by locality ID.

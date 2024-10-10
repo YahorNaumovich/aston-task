@@ -1,6 +1,7 @@
 package com.example.astontask.controller;
 
-import com.example.astontask.dto.AttractionDTO;
+import com.example.astontask.dto.request.AttractionCreateDTO;
+import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,8 +34,8 @@ public class AttractionController {
      */
     @PostMapping
     @Operation(summary = "Add attraction", description = "Adds new attraction and its assistances")
-    public ResponseEntity<Void> addAttraction(@RequestBody AttractionDTO attractionDTO) {
-        attractionService.addAttraction(attractionDTO);
+    public ResponseEntity<Void> addAttraction(@RequestBody AttractionCreateDTO attractionCreateDTO) {
+        attractionService.addAttraction(attractionCreateDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

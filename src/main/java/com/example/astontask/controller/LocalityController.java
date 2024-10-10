@@ -1,6 +1,6 @@
 package com.example.astontask.controller;
 
-import com.example.astontask.dto.LocalityDTO;
+import com.example.astontask.dto.request.LocalityCreateDTO;
 import com.example.astontask.service.LocalityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,8 +33,8 @@ public class LocalityController {
      */
     @PostMapping
     @Operation(summary = "Add locality", description = "Adds new locality")
-    public ResponseEntity<Void> addLocality(@RequestBody LocalityDTO localityDTO) {
-        localityService.addLocality(localityDTO);
+    public ResponseEntity<Void> addLocality(@RequestBody LocalityCreateDTO localityCreateDTO) {
+        localityService.addLocality(localityCreateDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

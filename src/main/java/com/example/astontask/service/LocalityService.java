@@ -1,6 +1,6 @@
 package com.example.astontask.service;
 
-import com.example.astontask.dto.LocalityDTO;
+import com.example.astontask.dto.request.LocalityCreateDTO;
 
 /**
  * Service interface for managing localities.
@@ -13,6 +13,6 @@ public interface LocalityService {
      *
      * @param localityDTO the data transfer object containing details of the locality to be added
      */
-    void addLocality(LocalityDTO localityDTO);
+    void addLocality(LocalityCreateDTO localityCreateDTO);
 
 }

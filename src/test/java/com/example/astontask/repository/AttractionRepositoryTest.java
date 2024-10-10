@@ -70,14 +70,14 @@ class AttractionRepositoryTest {
     void whenSaveAttraction_thenAttractionIsSaved() {
 
         Locality locality = new Locality(1L, "Test Locality", "Test Region", null);
-        Attraction attraction = new Attraction(null, "Test Attraction", new Date(), "Description 1", AttractionType.PARKS, locality, null);
+        Attraction attraction = new Attraction(null, "Test Attraction", new Date(), "Description 1", AttractionType.PARK, locality, null);
 
         localityRepository.save(locality);
         Attraction savedAttraction = attractionRepository.save(attraction);
 
         assertNotNull(savedAttraction.getId(), "The saved attraction should have an ID");
         assertEquals("Test Attraction", savedAttraction.getName());
-        assertEquals(AttractionType.PARKS, savedAttraction.getType());
+        assertEquals(AttractionType.PARK, savedAttraction.getType());
 
     }
 
@@ -89,8 +89,8 @@ class AttractionRepositoryTest {
         Locality locality = new Locality(null, "Test Locality", "Test Region", null);
         Locality savedLocality = localityRepository.save(locality);
 
-        attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARKS, savedLocality, null));
-        attractionRepository.save(new Attraction(null, "Attraction 2", new Date(), "Description 2", AttractionType.MUSEUMS, savedLocality, null));
+        attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARK, savedLocality, null));
+        attractionRepository.save(new Attraction(null, "Attraction 2", new Date(), "Description 2", AttractionType.MUSEUM, savedLocality, null));
 
         List<Attraction> attractions = attractionRepository.findByLocality(locality);
 
@@ -106,7 +106,7 @@ class AttractionRepositoryTest {
 
         Locality locality = new Locality(null, "Test Locality", "Test Region", null);
         Locality savedLocality = localityRepository.save(locality);
-        Attraction savedAttraction = attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARKS, savedLocality, null));
+        Attraction savedAttraction = attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARK, savedLocality, null));
 
         Optional<Attraction> foundAttraction = attractionRepository.findById(savedAttraction.getId());
 
@@ -122,7 +122,7 @@ class AttractionRepositoryTest {
 
         Locality locality = new Locality(null, "Test Locality", "Test Region", null);
         Locality savedLocality = localityRepository.save(locality);
-        Attraction savedAttraction = attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARKS, savedLocality, null));
+        Attraction savedAttraction = attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARK, savedLocality, null));
 
         attractionRepository.deleteById(savedAttraction.getId());
 
@@ -138,10 +138,10 @@ class AttractionRepositoryTest {
 
         Locality locality = new Locality(null, "Test Locality", "Test Region", null);
         Locality savedLocality = localityRepository.save(locality);
-        attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARKS, savedLocality, null));
-        attractionRepository.save(new Attraction(null, "Attraction 2", new Date(), "Description 2", AttractionType.MUSEUMS, savedLocality, null));
+        attractionRepository.save(new Attraction(null, "Attraction 1", new Date(), "Description 1", AttractionType.PARK, savedLocality, null));
+        attractionRepository.save(new Attraction(null, "Attraction 2", new Date(), "Description 2", AttractionType.MUSEUM, savedLocality, null));
 
-        List<Attraction> parkAttractions = attractionRepository.findByType(AttractionType.PARKS, Sort.by("name"));
+        List<Attraction> parkAttractions = attractionRepository.findByType(AttractionType.PARK, Sort.by("name"));
 
         assertFalse(parkAttractions.isEmpty(), "Attractions should be found for the given type");
         assertEquals(1, parkAttractions.size(), "There should be one park attraction");

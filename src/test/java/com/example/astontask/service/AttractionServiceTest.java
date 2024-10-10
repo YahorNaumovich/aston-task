@@ -1,6 +1,7 @@
 package com.example.astontask.service;
 
-import com.example.astontask.dto.AttractionDTO;
+import com.example.astontask.dto.request.AttractionCreateDTO;
+import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.exception.EntityNotFoundException;
 import com.example.astontask.exception.InvalidDataException;
 import com.example.astontask.model.Attraction;
@@ -52,13 +53,13 @@ class AttractionServiceTest {
     @DisplayName("Should successfully add new attraction")
     void shouldAddAttractionSuccessfully() {
 
-        AttractionDTO attractionDTO = new AttractionDTO();
+        AttractionCreateDTO attractionCreateDTO = new AttractionCreateDTO();
         Attraction attraction = new Attraction();
 
-        when(modelMapper.map(attractionDTO, Attraction.class)).thenReturn(attraction);
+        when(modelMapper.map(attractionCreateDTO, Attraction.class)).thenReturn(attraction);
         when(attractionRepository.save(attraction)).thenReturn(attraction);
 
-        attractionService.addAttraction(attractionDTO);
+        attractionService.addAttraction(attractionCreateDTO);
 
         verify(attractionRepository, times(1)).save(attraction);
         verify(assistanceRepository, times(1)).saveAll(attraction.getAssistance());
@@ -69,11 +70,11 @@ class AttractionServiceTest {
     @DisplayName("Should throw InvalidDataException when adding attraction fails")
     void shouldThrowInvalidDataExceptionWhenAddAttractionFails() {
 
-        AttractionDTO attractionDTO = new AttractionDTO();
+        AttractionCreateDTO attractionCreateDTO = new AttractionCreateDTO();
 
-        when(modelMapper.map(attractionDTO, Attraction.class)).thenThrow(RuntimeException.class);
+        when(modelMapper.map(attractionCreateDTO, Attraction.class)).thenThrow(RuntimeException.class);
 
-        assertThrows(InvalidDataException.class, () -> attractionService.addAttraction(attractionDTO));
+        assertThrows(InvalidDataException.class, () -> attractionService.addAttraction(attractionCreateDTO));
         verify(attractionRepository, never()).save(any());
 
     }
@@ -173,7 +174,7 @@ class AttractionServiceTest {
     void shouldRetrieveAllAttractionsWithSortingAndFiltering() {
 
         String sortBy = "name";
-        AttractionType type = AttractionType.PARKS;
+        AttractionType type = AttractionType.PARK;
         Attraction attraction = new Attraction();
         AttractionDTO attractionDTO = new AttractionDTO();
         Sort sort = Sort.by(Sort.Order.asc(sortBy));

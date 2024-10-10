@@ -1,5 +1,6 @@
 package com.example.astontask.controller;
 
+import com.example.astontask.dto.response.ErrorResponseDTO;
 import com.example.astontask.exception.EntityNotFoundException;
 import com.example.astontask.exception.InvalidDataException;
 import org.springframework.http.HttpStatus;
@@ -19,22 +20,24 @@ public class GlobalExceptionHandler {
      * Handles EntityNotFoundException.
      *
      * @param ex the EntityNotFoundException thrown
-     * @return a ResponseEntity with status 404 (Not Found) and the exception message
+     * @return a ResponseEntity with status 404 (Not Found) and an error message
      */
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    public ResponseEntity<ErrorResponseDTO> handleEntityNotFoundException(EntityNotFoundException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
     /**
      * Handles InvalidDataException.
      *
      * @param ex the InvalidDataException thrown
-     * @return a ResponseEntity with status 400 (Bad Request) and the exception message
+     * @return a ResponseEntity with status 400 (Bad Request) and an error message
      */
     @ExceptionHandler(InvalidDataException.class)
-    public ResponseEntity<String> handleInvalidDataException(InvalidDataException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ErrorResponseDTO> handleInvalidDataException(InvalidDataException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -44,8 +47,9 @@ public class GlobalExceptionHandler {
      * @return a ResponseEntity with status 500 (Internal Server Error) and a generic error message
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGenericException(Exception ex) {
-        return new ResponseEntity<>("An unexpected error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<ErrorResponseDTO> handleGenericException(Exception ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("An unexpected error occurred: " + ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

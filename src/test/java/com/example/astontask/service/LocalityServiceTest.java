@@ -1,6 +1,6 @@
 package com.example.astontask.service;
 
-import com.example.astontask.dto.LocalityDTO;
+import com.example.astontask.dto.request.LocalityCreateDTO;
 import com.example.astontask.exception.InvalidDataException;
 import com.example.astontask.model.Locality;
 import com.example.astontask.repository.LocalityRepository;
@@ -38,18 +38,18 @@ class LocalityServiceTest {
     @DisplayName("Should successfully add a new locality when valid data is provided")
     void shouldAddNewLocalityWhenValidDataProvided() {
 
-        LocalityDTO localityDTO = new LocalityDTO();
-        localityDTO.setName("Test Locality");
-        localityDTO.setRegion("Test Region");
+        LocalityCreateDTO localityCreateDTO = new LocalityCreateDTO();
+        localityCreateDTO.setName("Test Locality");
+        localityCreateDTO.setRegion("Test Region");
 
         Locality mappedLocality = new Locality();
         mappedLocality.setName("Test Locality");
         mappedLocality.setRegion("Test Region");
 
-        when(modelMapper.map(localityDTO, Locality.class)).thenReturn(mappedLocality);
+        when(modelMapper.map(localityCreateDTO, Locality.class)).thenReturn(mappedLocality);
         when(localityRepository.save(mappedLocality)).thenReturn(mappedLocality);
 
-        localityService.addLocality(localityDTO);
+        localityService.addLocality(localityCreateDTO);
 
         verify(localityRepository, times(1)).save(mappedLocality);
 
@@ -59,12 +59,12 @@ class LocalityServiceTest {
     @DisplayName("Should throw InvalidDataException when error occurs during locality creation")
     void shouldThrowInvalidDataExceptionWhenErrorOccursDuringCreation() {
 
-        LocalityDTO localityDTO = new LocalityDTO();
-        localityDTO.setName("Invalid Locality");
+        LocalityCreateDTO localityCreateDTO = new LocalityCreateDTO();
+        localityCreateDTO.setName("Invalid Locality");
 
-        when(modelMapper.map(localityDTO, Locality.class)).thenThrow(new RuntimeException("Mapping failed"));
+        when(modelMapper.map(localityCreateDTO, Locality.class)).thenThrow(new RuntimeException("Mapping failed"));
 
-        InvalidDataException exception = assertThrows(InvalidDataException.class, () -> localityService.addLocality(localityDTO));
+        InvalidDataException exception = assertThrows(InvalidDataException.class, () -> localityService.addLocality(localityCreateDTO));
 
         assertEquals("Invalid data provided for locality creation", exception.getMessage());
         verify(localityRepository, never()).save(any(Locality.class));
