@@ -27,7 +27,7 @@ public class LocalityController {
     /**
      * Adds a new locality.
      *
-     * @param localityDTO the data of the locality to be added
+     * @param localityCreateDTO the data of the locality to be added
      * @return ResponseEntity with status 201 (Created) if the locality was successfully created,
      *         or an appropriate error status otherwise
      */

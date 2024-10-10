@@ -28,7 +28,7 @@ public class AttractionController {
     /**
      * Adds a new attraction and its assistances.
      *
-     * @param attractionDTO the attraction data to be added
+     * @param attractionCreateDTO the attraction data to be added
      * @return ResponseEntity with status 201 (Created) if the attraction was successfully created,
      *         or an appropriate error status otherwise
      */
