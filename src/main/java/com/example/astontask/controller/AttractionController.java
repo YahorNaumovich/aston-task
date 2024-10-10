@@ -4,8 +4,6 @@ import com.example.astontask.dto.AttractionDTO;
 import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
