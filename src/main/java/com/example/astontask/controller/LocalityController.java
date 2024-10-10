@@ -35,11 +35,6 @@ public class LocalityController {
      */
     @PostMapping
     @Operation(summary = "Add locality", description = "Adds new locality")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Locality successfully created"),
-            @ApiResponse(responseCode = "400", description = "Invalid input, object invalid"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
     public ResponseEntity<Void> addLocality(@RequestBody LocalityDTO localityDTO) {
         localityService.addLocality(localityDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
