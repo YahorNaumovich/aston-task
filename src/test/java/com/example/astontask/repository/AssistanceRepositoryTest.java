@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Testcontainers
 @Transactional
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class AssistanceRepositoryTest {
+class AssistanceRepositoryTest {
 
     @Container
     private static final PostgreSQLContainer<?> postgreSQLContainer =
