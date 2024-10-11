@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 @Aspect
 @Component
@@ -57,15 +58,16 @@ public class LoggingAspect {
      * @return the component type as a String
      */
     private String getComponentType(ProceedingJoinPoint joinPoint) {
-        String className = joinPoint.getTarget().getClass().getSimpleName();
-        if (className.endsWith("Controller")) {
-            return "controller";
-        } else if (className.endsWith("Service")) {
-            return "service";
-        } else if (className.endsWith("Repository")) {
-            return "repository";
+        Class<?> targetClass = joinPoint.getTarget().getClass();
+
+        if (targetClass.isAnnotationPresent(RestController.class)) {
+            return "Controller";
+        } else if (targetClass.isAnnotationPresent(org.springframework.stereotype.Service.class)) {
+            return "Service";
+        } else if (targetClass.isAnnotationPresent(org.springframework.stereotype.Repository.class)) {
+            return "Repository";
         }
-        return "unknown";
+        return "Unknown";
     }
 
 }
