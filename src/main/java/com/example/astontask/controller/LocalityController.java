@@ -38,5 +38,4 @@ public class LocalityController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    //TODO - Изменение данных по местоположению (возможно изменение только полей: краткое описание, сопровождение (услуга)).
 }
