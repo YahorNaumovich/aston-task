@@ -5,7 +5,9 @@ import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,7 @@ public class AttractionController {
      */
     @PostMapping
     @Operation(summary = "Add attraction", description = "Adds new attraction and its assistances")
+    @ApiResponse(responseCode = "201", description = "Attraction successfully created")
     public ResponseEntity<Void> addAttraction(@RequestBody AttractionCreateDTO attractionCreateDTO) {
         attractionService.addAttraction(attractionCreateDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -49,8 +52,9 @@ public class AttractionController {
      */
     @GetMapping
     @Operation(summary = "Get all attractions", description = "Gets a list of all attractions with the ability to filter and sort")
-    public ResponseEntity<List<AttractionDTO>> getAllAttractions(@RequestParam String sortBy,
-                                                                 @RequestParam AttractionType type) {
+    @ApiResponse(responseCode = "200", description = "List of attractions retrieved")
+    public ResponseEntity<List<AttractionDTO>> getAllAttractions(@RequestParam @Schema(description = "Field by which the attractions should be sorted. Possible values: 'id', 'name', 'type', 'creationDate'", example = "name") String sortBy,
+                                                                 @RequestParam @Schema(description = "Type of attraction to filter by", example = "PALACE") AttractionType type) {
         return new ResponseEntity<>(attractionService.getAllAttractions(sortBy, type), HttpStatus.OK);
     }
 
@@ -62,7 +66,8 @@ public class AttractionController {
      */
     @GetMapping("/locality/{localityId}")
     @Operation(summary = "Get all attractions by locality", description = "Gets a list of all attractions by specified locality id")
-    public ResponseEntity<List<AttractionDTO>> getAllAttractionsByLocality(@PathVariable Long localityId) {
+    @ApiResponse(responseCode = "200", description = "List of attractions retrieved")
+    public ResponseEntity<List<AttractionDTO>> getAllAttractionsByLocality(@PathVariable @Schema(description = "Id of the locality used to search for attractions") Long localityId) {
         return new ResponseEntity<>(attractionService.getAllAttractionsByLocality(localityId), HttpStatus.OK);
     }
 
@@ -76,7 +81,9 @@ public class AttractionController {
      */
     @PutMapping("/{id}")
     @Operation(summary = "Change attraction description", description = "Changes attraction description")
-    public ResponseEntity<Void> updateAttractionDescription(@PathVariable Long id, @RequestBody @Schema(example = "New attraction description") String description) {
+    @ApiResponse(responseCode = "200", description = "Attraction description updated successfully")
+    public ResponseEntity<Void> updateAttractionDescription(@PathVariable @Schema(description = "Id of the attraction to be updated") Long id,
+                                                            @RequestBody @Schema(example = "New attraction description") String description) {
         attractionService.updateAttractionDescription(id, description);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -90,7 +97,8 @@ public class AttractionController {
      */
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete attraction", description = "Deletes an attraction by id")
-    public ResponseEntity<Void> deleteAttraction(@PathVariable Long id) {
+    @ApiResponse(responseCode = "200", description = "Attraction deleted successfully")
+    public ResponseEntity<Void> deleteAttraction(@PathVariable @Schema(description = "Id of the attraction to be deleted") Long id) {
         attractionService.deleteAttraction(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
