@@ -5,7 +5,6 @@ import com.example.astontask.dto.response.AttractionDTO;
 import com.example.astontask.model.type.AttractionType;
 import com.example.astontask.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
