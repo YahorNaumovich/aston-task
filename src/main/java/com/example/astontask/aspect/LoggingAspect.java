@@ -16,22 +16,20 @@ public class LoggingAspect {
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
     /**
-     * Pointcut that matches all methods within classes annotated with @RestController, @Service, or @Repository.
+     * Pointcut that matches all methods within classes annotated with @RestController, @Service.
      */
     @Pointcut("within(@org.springframework.web.bind.annotation.RestController *) || " +
-            "within(@org.springframework.stereotype.Service *) || " +
-            "within(@org.springframework.stereotype.Repository *)")
+            "within(@org.springframework.stereotype.Service *)")
     public void loggingPointcut() {
-        // Pointcut for all controllers, services, and repositories
+        // Pointcut for all controllers and services
     }
 
     /**
-     * Logs method execution details for any Spring component.
      * Logs the method name, arguments, the result of the method, and any exceptions thrown.
      *
      * @param joinPoint the join point that provides details about the method being executed
      * @return the result of the method execution
-     * @throws Exception if the method execution fails
+     * @throws Throwable if the method execution fails
      */
     @Around("loggingPointcut()")
     public Object logMethods(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -45,14 +43,14 @@ public class LoggingAspect {
             Object result = joinPoint.proceed();
             logger.info("{} method {} returned: {}", componentType, methodName, result);
             return result;
-        } catch (Exception e) {
+        } catch (Throwable e) {
             logger.error("Error in {} method {}: {}", componentType, methodName, e.getMessage());
             throw e;
         }
     }
 
     /**
-     * Helper method to determine the type of component (Controller, Service, or Repository).
+     * Helper method to determine the type of component (Controller, Service).
      *
      * @param joinPoint the join point
      * @return the component type as a String
@@ -64,8 +62,6 @@ public class LoggingAspect {
             return "Controller";
         } else if (targetClass.isAnnotationPresent(org.springframework.stereotype.Service.class)) {
             return "Service";
-        } else if (targetClass.isAnnotationPresent(org.springframework.stereotype.Repository.class)) {
-            return "Repository";
         }
         return "Unknown";
     }
