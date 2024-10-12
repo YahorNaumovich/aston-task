@@ -27,7 +27,7 @@ public class LocalityServiceImpl implements LocalityService {
      * Adds a new locality to the repository.
      * The method maps the provided {@link LocalityDTO} to a {@link Locality} entity and saves it.
      *
-     * @param localityDTO the data transfer object containing the locality details to be added
+     * @param localityCreateDTO the data transfer object containing the locality details to be added
      * @throws InvalidDataException if there is an error during the locality creation process
      */
     @Override

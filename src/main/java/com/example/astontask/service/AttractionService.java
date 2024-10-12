@@ -15,7 +15,7 @@ public interface AttractionService {
     /**
      * Adds a new attraction.
      *
-     * @param attractionDTO the data transfer object containing the details of the attraction to be added
+     * @param attractionCreateDTO the data transfer object containing the details of the attraction to be added
      */
     void addAttraction(AttractionCreateDTO attractionCreateDTO);
 

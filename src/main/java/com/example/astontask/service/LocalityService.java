@@ -11,7 +11,7 @@ public interface LocalityService {
     /**
      * Adds a new locality.
      *
-     * @param localityDTO the data transfer object containing details of the locality to be added
+     * @param localityCreateDTO the data transfer object containing details of the locality to be added
      */
     void addLocality(LocalityCreateDTO localityCreateDTO);
 
