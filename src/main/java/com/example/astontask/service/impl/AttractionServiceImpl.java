@@ -81,7 +81,7 @@ public class AttractionServiceImpl implements AttractionService {
     /**
      * Updates the description of an existing attraction.
      *
-     * @param id the ID of the attraction to update
+     * @param id          the ID of the attraction to update
      * @param description the new description of the attraction
      * @throws EntityNotFoundException if the attraction with the specified ID is not found
      */
@@ -118,7 +118,7 @@ public class AttractionServiceImpl implements AttractionService {
      * Retrieves all attractions with sorting and filtering options.
      *
      * @param sortBy the field by which to sort the attractions
-     * @param type the type of attractions to filter by
+     * @param type   the type of attractions to filter by
      * @return a list of {@link AttractionDTO} representing all attractions sorted and filtered by the specified criteria
      */
     @Override

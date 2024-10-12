@@ -30,7 +30,7 @@ public class LocalityController {
      *
      * @param localityCreateDTO the data of the locality to be added
      * @return ResponseEntity with status 201 (Created) if the locality was successfully created,
-     *         or an appropriate error status otherwise
+     * or an appropriate error status otherwise
      */
     @PostMapping
     @Operation(summary = "Add locality", description = "Adds new locality")
